@@ -42,6 +42,7 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Address</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -63,7 +64,14 @@
                         <%=dataUsers[i].address%>
                     </td>
                     <td>
-                        <a href="/detail/user/<%=dataUsers[i].id%>" target="_blank">Details</a>
+                        <a class="btn btn-success" href="/detail/user/<%=dataUsers[i].id%>" target="_blank">Details</a>
+                        <form class="d-inline" action="/edit-user/<%=dataUsers[i].id%>" method="GET">
+                            <button class="btn btn-info" type="submit">Edit</button>
+                        </form>
+                        <form class="d-inline" action="/delete-user" method="POST">
+                            <input class="d-none" name="userId" value="<%=dataUsers[i].id%>"></input>
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 <%}%>

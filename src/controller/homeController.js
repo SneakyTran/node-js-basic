@@ -39,8 +39,37 @@ let createNewUser = async (req, res) => {
     return res.redirect("/");
 };
 
+let deleteUser = async (req, res) => {
+    await pool.execute("DELETE FROM users WHERE id = ?", [req.body.userId]);
+    return res.redirect("/");
+};
+
+let editUser = async (req, res) => {
+    let { userId } = req.params;
+    let [user] = await pool.execute("SELECT * FROM users WHERE id = ?", [
+        userId,
+    ]);
+    return res.render("update.ejs", { dataUser: user[0] });
+};
+
+let updateUser = async (req, res) => {
+    try {
+        let { firstName, lastName, email, address, id } = req.body;
+        await pool.execute(
+            "UPDATE users SET firstName = ?,lastName = ?,email = ?,address = ? WHERE id = ?",
+            [firstName, lastName, email, address, id]
+        );
+        return res.redirect("/");
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 module.exports = {
     getHomePage,
     getDetailUser,
     createNewUser,
+    deleteUser,
+    editUser,
+    updateUser,
 };
