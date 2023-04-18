@@ -1,6 +1,7 @@
 import express from "express";
 import configViewEngine from "./configs/viewEngine";
 import initWebRoute from "./router/web";
+import initAPIRoute from "./router/apis";
 
 require("dotenv").config();
 
@@ -16,6 +17,9 @@ app.use(express.json());
 
 //init web route
 initWebRoute(app);
+
+//init api route
+initAPIRoute(app);
 
 console.log(">>> CHECKOUT PORT", port);
 
