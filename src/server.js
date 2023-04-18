@@ -10,6 +10,10 @@ const port = process.env.PORT || 8080;
 //setup viewEngine
 configViewEngine(app);
 
+//urlencoded
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 //init web route
 initWebRoute(app);
 
