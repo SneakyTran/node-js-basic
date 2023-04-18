@@ -65,6 +65,14 @@ let updateUser = async (req, res) => {
     }
 };
 
+let handleUploadFile = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 module.exports = {
     getHomePage,
     getDetailUser,
@@ -72,4 +80,5 @@ module.exports = {
     deleteUser,
     editUser,
     updateUser,
+    handleUploadFile,
 };

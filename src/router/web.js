@@ -9,6 +9,7 @@ const initWebRoute = (app) => {
     router.post("/delete-user", homeController.deleteUser);
     router.get("/edit-user/:userId", homeController.editUser);
     router.post("/update-user/", homeController.updateUser);
+    router.post("/handle-upload-filer/", homeController.handleUploadFile);
 
     router.get("/about", (req, res) => {
         //!tách ttheo MVC
